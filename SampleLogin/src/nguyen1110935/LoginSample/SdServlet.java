@@ -36,10 +36,14 @@ public class SdServlet extends HttpServlet {
 		String pass = (String) request.getAttribute("pass"); 
 		//out.println("Hello Man "+ username + "Pass " + pass + "by second servlet");
 		HttpSession session = request.getSession();
+		String oldpass = session.getAttribute("pa") == null? "pass123" : (String) session.getAttribute("pa");
+		System.out.println("Lodpass is "+oldpass + " "+ (String) session.getAttribute("pa"));
 		
-		if (username.equals("nguyen1110935")&& pass.equals("pass123")){
+		if (username.equals("nguyen1110935")&& pass.equals(oldpass)){
 			session.setAttribute("send", "You logged in successfully");
+			session.setAttribute("tojsp", pass);
 			getServletContext().setAttribute("sendapp", "Have a great working day.");
+			
 			//choice 1: getServletContext().getRequestDispatcher("/ServletToJSP.jsp").forward(request, response);
 			getServletContext().getRequestDispatcher("/loadjsp").forward(request, response);
 		}

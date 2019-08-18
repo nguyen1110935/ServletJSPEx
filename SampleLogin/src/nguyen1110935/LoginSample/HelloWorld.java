@@ -42,7 +42,8 @@ public class HelloWorld extends HttpServlet {
     }
     protected void doGet (HttpServletRequest req, HttpServletResponse res) throws IOException {
     	String username = req.getParameter("username"); String password =
-    	req.getParameter("password"); PrintWriter out = res.getWriter();
+    	req.getParameter("password"); 
+    	PrintWriter out = res.getWriter();
     	out.println("username "+ username +"password "+ password + "by Get");
 		 
     }
